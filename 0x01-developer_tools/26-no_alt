@@ -1,1 +1,2 @@
-.img-fluid.img.*
+.img-fluid.img.*, *::before, *::after
+
