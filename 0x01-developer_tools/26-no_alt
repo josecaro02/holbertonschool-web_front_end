@@ -1,2 +1,3 @@
-.img-fluid.img.*, *::before, *::after
+.img-fluid.missing-alt
+
 
