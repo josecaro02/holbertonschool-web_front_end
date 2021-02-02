@@ -129,7 +129,7 @@ a:active{
     margin-right: auto;
 }
 
-footer{
+.footer{
     padding: var(--footer-padding);
 }
 
@@ -139,7 +139,7 @@ footer{
     color: var(--text-color);
 }
 
-footer ul{
+.footer ul{
     text-align: right;
 }
 
@@ -172,7 +172,7 @@ footer ul{
     color: var(--nav-item-link-hover);
 }
 
-.row ul{
+ul .row{
     margin: 0;
     padding: 0;
     list-style-type: none;
