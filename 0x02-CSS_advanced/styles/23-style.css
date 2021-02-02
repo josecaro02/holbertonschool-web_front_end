@@ -143,6 +143,10 @@ a:active{
     text-align: right;
 }
 
+.footer-address{
+    color: var(--text-color);
+}
+
 .navbar-menu{
     float: right;
 }
@@ -201,4 +205,12 @@ ul.row{
     --text-color:  var(--color-white);
     --section-title-color: var(--color-white);
     background-color: var(--color-black); 
+}
+
+.social-link{
+    display: block;
+}
+
+.social-link svg{
+    fill: var(--text-color);
 }
