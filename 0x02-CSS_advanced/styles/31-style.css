@@ -371,11 +371,11 @@ ul.row{
     opacity: 1;
 }
 
-.card-quote .card-testimonial{
+.card-testimonial .card-quote{
     position: relative;
 }
 
-card-quote::before card-testimonial{
+.card-testimonial card-quote::before{
     content: "\201C";
     position: absolute;
     top: -4.5rem;
