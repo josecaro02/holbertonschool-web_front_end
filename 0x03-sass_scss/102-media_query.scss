@@ -1,0 +1,43 @@
+/* Task 102 */
+$screenMax960: 960px;
+$screenMax640: 640px;
+$screenMax320: 320px;
+
+@mixin mx320{
+    @media screen and(max-width: #{$screenMax320}){
+	@content;
+    }
+}
+
+@mixin mx640{
+    @media screen and(max-width: #{$screenMax640}){
+	@content;
+    }
+}
+
+@mixin mx960{
+    @media screen and(max-width: #{$screenMax960}){
+	@content;
+    }
+}
+
+
+
+h1{
+    font-size: 20px;
+
+    @include mx960 {
+	font-size: 18px;
+    }
+
+    @include mx640{
+	font-size: 16px;
+    }
+
+    @include mx320{
+	font-size: 14px;
+	h1.small {
+	    color: #1D1D1D;
+	}
+    }
+}
