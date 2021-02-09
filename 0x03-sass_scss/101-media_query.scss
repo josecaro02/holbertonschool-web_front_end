@@ -1,0 +1,15 @@
+/* Task 101 */
+$screen-320: 320px;
+
+@mixin sm{
+    @media screen and(max-width: #{$screen-320}){
+	@content;
+    }
+}
+
+h1{
+    font-size: 20px;
+    @include sm {
+	font-size: 14px;
+    }
+}
