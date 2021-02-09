@@ -1,13 +1,13 @@
 /* Task 8 */
-@mixin attrs() {
-    margin-left: 10px;
-    margin-right: 10px;
+@mixin attrs($margin) {
+    margin-left: $margin;
+    margin-right: $margin;
 }
 
 body{
-    @include attrs();
+    @include attrs(10px);
 }
 
 div{
-    @include attrs();
+    @include attrs(15px);
 }
