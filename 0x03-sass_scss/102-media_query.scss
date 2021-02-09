@@ -36,7 +36,7 @@ h1{
 
     @include mx320{
 	font-size: 14px;
-	h1.small {
+	&.small {
 	    color: #1D1D1D;
 	}
     }
