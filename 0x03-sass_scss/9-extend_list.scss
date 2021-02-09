@@ -1,0 +1,18 @@
+/* Task 9 */
+%attrs {
+    font-size: 12px;
+}
+
+.info{
+    @extend %attrs;
+}
+
+.success{
+    @extend %attrs;
+    color: #00FF00;
+}
+
+.warning{
+    @extend %attrs;
+    color: #FF0000;
+}
