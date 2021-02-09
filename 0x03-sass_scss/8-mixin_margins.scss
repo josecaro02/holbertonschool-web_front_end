@@ -1,0 +1,13 @@
+/* Task 8 */
+@mixin attrs() {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+body{
+    @include attrs();
+}
+
+div{
+    @include attrs();
+}
