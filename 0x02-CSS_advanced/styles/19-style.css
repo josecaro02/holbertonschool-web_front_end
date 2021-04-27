@@ -125,7 +125,7 @@ a:active {
     margin-right: auto;
 }
 
-footer {
+.footer {
     padding: var(--footer-padding);
 }
 
@@ -182,6 +182,6 @@ ul.row{
     color: var(--text-color);
 }
 
-footer ul {
+.footer ul {
     text-align: right;
 }
