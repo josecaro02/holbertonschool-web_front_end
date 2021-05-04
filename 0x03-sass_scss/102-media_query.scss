@@ -1,0 +1,35 @@
+/* Task 102 */
+@mixin mq960() {
+    @media screen and (max-width: 960px) {
+        @content;
+    }
+}
+
+@mixin mq640() {
+    @media screen and (max-width: 640px) {
+        @content;
+    }
+}
+
+@mixin mq320() {
+    @media screen and (max-width: 320px) {
+        @content;
+    }
+}
+
+h1 {
+    font-size: 20px;
+    @include mq960() {
+        font-size: 18px;
+    }
+    @include mq640() {
+        font-size: 16px;
+    }
+    @include mq320() {
+        font-size: 14px;
+
+        &.small {
+            color: #1D1D1D;
+        }
+    }
+}
