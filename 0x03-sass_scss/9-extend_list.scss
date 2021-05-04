@@ -1,0 +1,18 @@
+/* Task 9 */
+%sharedFontSize {
+    font-size: 12px;
+}
+
+.info {
+    @extend %sharedFontSize;
+}
+
+.success {
+    @extend %sharedFontSize;
+    color: #00FF00;
+}
+
+.warning {
+    @extend %sharedFontSize;
+    color: #FF0000;
+}
