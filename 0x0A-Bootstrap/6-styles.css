@@ -13,6 +13,10 @@
     border-color: #E0003C;
 }
 
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+    background-color: #E0003C;
+    border-color: #E0003C;
+}
 a, a:hover, a:focus {
     color: #E0003C !important;
 }
@@ -26,4 +30,8 @@ a, a:hover, a:focus {
     background-color: #E0003C;
     border-top-right-radius: 1rem !important;
     border-top-left-radius: 1rem !important;
+}
+
+.d-flex {
+    border-color: #E0003C !important;
 }
