@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 7</title>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>        
+        <script type="application/javascript">
+            window.onload = function(){
+                function createSearchForm(){
+                    var input1 = $('<input/>').attr({type: 'text'});
+                    var inputSubmit = $('<input/>').attr({type: 'submit'});
+
+                    inputSubmit.click(function(){
+                        queryWikipedia($('input').val());
+                    });
+                    var ul = $('<ul></ul>');
+
+                    $('body').append(input1, inputSubmit, ul);
+                }
+
+                function addNewArticle(id, title, snippet){
+                    var li = $('<li></li>');
+                    li.append(
+                        $('<p></p>').append(
+                            $('<span></span>').text(id + ' - '),
+                            $('<b></b>').text(title)
+                        ),
+                        $('<p></p>').append(snippet)
+                    );
+
+                    $('ul').append(li);
+                }
+
+                function queryWikipedia(search){
+                    var url = "https://en.wikipedia.org/w/api.php"; 
+
+                    var params = {
+                        action: "query",
+                        list: "search",
+                        srsearch: search,
+                        format: "json"
+                    };
+
+                    $.ajax({
+                        url: url + "?origin=*",
+                        type: 'get',
+                        data: params,
+                        success: function(response){
+                            for (var i of response.query.search){
+                                addNewArticle(i.pageid, i.title, i.snippet);
+                            }
+                        },
+                        error: function(xhr){
+                        }
+                    }
+                    )
+                }
+
+                createSearchForm();
+            }
+        </script>
+
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

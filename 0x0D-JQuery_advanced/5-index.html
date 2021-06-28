@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 5</title>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+        
+        <script type="application/javascript">
+            window.onload = function(){
+                function createFamilyTree(){
+                    var table = $('<table></table>').append(
+                        $('<thead></thead>').append(
+                            $('<th></th>').text('Firstname'),
+                            $('<th></th>').text('Lastname')
+                        ),
+                        $('<tbody></tbody>')
+                    );
+                    $('body').append(table);
+                }
+                function addNewMember(firstName, lastName){
+                    var tr = $('<tr></tr>');
+                    var fName = $('<td></td');
+                    var lName = $('<td></td>');
+                    var x = $('<td></td>');
+
+                    fName.text(firstName);
+                    lName.text(lastName);
+                    x.text('(x)');
+
+                    x.css('background-color', 'orange');
+
+                    tr.append(fName, lName, x);
+                    x.click(function(){
+                        tr.remove();
+                    });
+
+                    $('tbody').append(tr);
+                }
+                createFamilyTree();
+                addNewMember("Guillaume", "Salva");
+                addNewMember("Arielle", "Snizt");
+                addNewMember("Fanette", "Snizt");
+                addNewMember("Gerard", "Snizt");
+                addNewMember("Victor", "Snizt"); 
+            }
+        </script>
+
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
