@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 9</title>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>        
+        <script type="application/javascript">
+            window.onload = function(){
+                function addPostRow(data){
+                    var p = $('<p></p>');
+                    p.append($('<span></span>').text('Post created with id ' +  data.id + ', title: ' + data.title + ', author: ' + data.author));
+                    $('body').append(p);                    
+                }
+
+                function listPosts(){
+                    const url = "http://localhost:3000/posts";
+                    $.get(url, function (data){
+                        for (var item of data) {
+                            addPostRow(item);
+                        }
+                    }).fail(function () {
+                        alert("Server Error");
+                    });
+                }
+                listPosts();
+            }
+        </script>
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

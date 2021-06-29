@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Task 8</title>
+        <title>Task 9</title>
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>        
         <script type="application/javascript">
@@ -37,6 +37,8 @@
                 }
 
                 function queryWikipedia(search, offset = 0){
+
+                    displayLoading(true);
                     var url = "https://en.wikipedia.org/w/api.php"; 
                     var itemsPerPage = 10;
                     var params = {
@@ -49,14 +51,13 @@
                         srsort: "create_timestamp_desc",
                     };
 
-
-
                     $.ajax({
                         url: url + "?origin=*",
                         type: 'get',
                         data: params,
                         success: function(response){
                             $('ul').first().empty();
+                            displayLoading(false);
                             for (var i of response.query.search){
                                 addNewArticle(i.pageid, i.title, i.snippet);
                             }
@@ -93,9 +94,24 @@
                         $ul.append($page);
                     }
                 }
+
+                function displayLoading(loading){
+                    var ul = $('ul').first();
+
+                    if (loading)
+                        ul.wrap($('<div></div>').addClass('loading'));
+                    else
+                        ul.unwrap();
+                }
                 createSearchForm();
             }
         </script>
+
+        <style>
+            .loading {
+                opacity: 0.2;
+            }
+        </style>
 
 
     </head>
