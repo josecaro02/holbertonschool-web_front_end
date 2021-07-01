@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+
+        function getCartFromStorage(){
+            var obj = JSON.parse(sessionStorage.getItem("cart"));
+            if(obj)
+                return obj;
+            return {};
+        }
+
+        
+        function addItemToCart(item){
+            var cart = getCartFromStorage();
+
+            if (cart && cart[item]){
+                cart[item]++;
+            }else{
+                cart[item] = 1;
+            }
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+
+            displayCart(); 
+        }
+        function removeItemfromCart(item) {
+            let cart = getCartFromStorage();
+            if (cart && cart[item]) {
+            delete cart[item];
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            }
+            displayCart();
+        }
+        function clearCart() {
+            sessionStorage.clear();
+            displayCart();
+        }
+
+        function createStore() {
+            var h2 = document.createElement("h2");
+            h2.innerHTML = "Available products:";
+            var ul = document.createElement("ul");
+            var body = document.body;
+
+            for (let item of availableItems) {
+                var li = document.createElement("li");
+                li.innerHTML = item;
+                li.addEventListener("click", function () {
+                    addItemToCart(item);
+                });
+                ul.append(li);
+            }
+
+            body.append(h2);
+            body.append(ul);
+        }
+
+        function displayCart() {
+            var prevCart = document.getElementById("cartDiv");
+            if (prevCart) {
+                var ul = document.getElementById("cartList");
+                ul.remove();
+            } else {
+                var h2 = document.createElement("h2");
+                var div = document.createElement("div");
+                div.setAttribute("id", "cartDiv");
+                body = document.body;
+                h2.innerHTML = "Your cart:";
+                body.append(h2);
+                body.append(div);
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            var ul = document.createElement("ul");
+            ul.setAttribute("id", "cartList");
+            var div = document.getElementById("cartDiv");
+            var cart = getCartFromStorage();
+            if (Object.keys(cart).length === 0) {
+                let li = document.createElement("li");
+                li.innerHTML = "Your cart is empty";
+                ul.append(li);
+            } else {
+                let deleteCart = document.createElement("li");
+                deleteCart.innerHTML = "Clear my cart";
+                deleteCart.addEventListener("click", function () {
+                    clearCart();
+                });
+                ul.append(deleteCart);
+                for (let item in cart) {
+                    let li = document.createElement("li");
+                    li.innerHTML = item  + ' x ' + cart[item];
+                    let span = document.createElement("span");
+                    span.innerHTML = "(remove)";
+
+                    span.addEventListener("click", function () {
+                        removeItemfromCart(item);
+                    });
+
+                    li.append(span);
+                    ul.append(li);
+                }
+            }
+
+            div.append(ul);
+        }
+
+        if (typeof Storage !== "undefined") {
+            createStore();
+            displayCart();
+        } else {
+            alert("Sorry, your browser does not support Web storage. Try again with a better one");
+        }
+    </script>
+</body>
+</html>
